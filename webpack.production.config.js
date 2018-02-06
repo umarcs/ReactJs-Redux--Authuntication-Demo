@@ -3,20 +3,19 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var StatsPlugin = require('stats-webpack-plugin');
 
 
 module.exports = {
-    
-    devtool: 'eval-source-map',
     entry: [
-        'webpack-hot-middleware/client?reload=true',
         path.join(__dirname, 'dev/js/index.js')
-      ],
+    ],
     output: {
         path: path.join(__dirname, '/dist/'),
-        filename: '[name].js',
+        filename: '[name]-[hash].min.js',
         publicPath: '/'
-      },
+    },
     module: {
         loaders: [
             {
@@ -32,16 +31,25 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-             template: 'src/index.html',
-             inject: 'body',
-             filename: 'index.html'
-        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: 'body',
+            filename: 'index.html'
+       }),
+        new ExtractTextPlugin('[name]-[hash].min.css'),
+        new webpack.optimize.UglifyJsPlugin({
+          compressor: {
+            warnings: false,
+            screw_ie8: true
+          }
+        }),
+        new StatsPlugin('webpack.stats.json', {
+          source: false,
+          modules: false
+        }),
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('development')
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         })
       ]
 };
