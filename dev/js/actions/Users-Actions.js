@@ -2,10 +2,9 @@ import Request from 'superagent';
 import { SubmissionError } from 'redux-form'
 //import config from '../config';
 
-
 let apiBaseUrl = '/';
 if(process.env.NODE_ENV == 'production') {
-    apiBaseUrl = 'http://209.250.243.231:2000'
+    apiBaseUrl = 'http://209.250.243.231:4000'
 } else {
     apiBaseUrl = 'http://localhost:2000'
 }

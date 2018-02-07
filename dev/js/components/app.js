@@ -48,7 +48,15 @@ class App extends React.Component {
                             }
                             <Route path='/login' component={Login} />
                             <Route path='/signup' exact component={SignUp} />
-                            <Route path='/single' exact component={SingleUserData} />
+                            <Route path='/' render={() =>
+                                <p>
+                                    <div className="card bg-faded card-block">
+                                        <div className="row">
+                                            <h1>WELCOME</h1>
+                                        </div>
+                                    </div>
+                                     <h4><Link to="/dashboard">Go</Link></h4>
+                                </p>} />
 
                             { /* <Redirect from='/' exact to='about/city' />  */} { /* <Route  render={()=>{return(<h1>error loading page</h1>)} } /> */}
                             <Route path="*" render={() => <h1> Not Found </h1>} />

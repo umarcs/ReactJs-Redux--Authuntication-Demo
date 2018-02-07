@@ -18,7 +18,7 @@ class SignUp extends React.Component {
         return ( 
             <div>
                 <SignUpForm onSubmit = {this.onSubmitForm}/>
-            </div >
+            </div>
         )
 
     }
