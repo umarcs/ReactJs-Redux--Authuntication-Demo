@@ -49,6 +49,7 @@ let Update = props => {
           <div className="card bg-faded card-block">
             <h3>Update Your Data</h3>
           </div>
+          <br />
           <div className="card bg-faded card-block">
             <form onSubmit={handleSubmit}>
               <div className="row">

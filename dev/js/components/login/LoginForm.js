@@ -45,6 +45,7 @@ const LoginForm = (props) => {
           <div className="card bg-faded card-block">
             <h3>Login to Your Account</h3>
           </div>
+          <br />
           <div className="card bg-faded card-block">
             <div className="row">
               <div className="col-md-6">
