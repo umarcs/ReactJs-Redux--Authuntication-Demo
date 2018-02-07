@@ -1,6 +1,10 @@
 import Request from 'superagent';
 import { SubmissionError } from 'redux-form'
+//import config from '../config';
 
+
+
+ 
 export function getSingleUser(userId){  
     const url = `http://localhost:2000/userFindById/${userId}`;
     return  Request.get(url).then((response=>{
@@ -24,6 +28,7 @@ export function getUserData(){
 }
 //----------Sign Up----------
 export function signUp(data){  
+
     console.log("signup fun vals",data)
     const url = "http://localhost:2000/api/signup";
     return  Request.post(url).send(data).then(response=>{
@@ -39,6 +44,7 @@ export function signUp(data){
 //----------login----------
 export function loginAction(data){  
     console.log("data",data)
+
 
     const url = "http://localhost:2000/api/login";
     return  Request.post(url).send(data).then(response=>{

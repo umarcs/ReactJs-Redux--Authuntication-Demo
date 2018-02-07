@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm, reducer } from 'redux-form'
 import { style } from 'typestyle';
-import { BrowserRouter , Route, Link,NavLink, Switch, Redirect, Prompt} from 'react-router-dom';
+import { BrowserRouter, Route, Link, NavLink, Switch, Redirect, Prompt } from 'react-router-dom';
 
 import FlatButton from 'material-ui/FlatButton';
 
@@ -51,66 +51,62 @@ const signUp = props => {
     <div className="container">
       <div className="row">
         <div className="modal-body">
-          <div className="well">
+          <div className="card bg-faded card-block">
             <h3>Create Account</h3>
           </div>
-          <div className="well">
+          <br />
+          <div className="card bg-faded card-block">
             <form onSubmit={handleSubmit}>
               <div className="row">
-                <div className="col-md-12">
-                  <div className="col-md-6">
-                    <Field
-                      name="firstName"
-                      type="text"
-                      component={renderField}
-                      label="First Name"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <Field
-                      name="lastName"
-                      type="text"
-                      component={renderField}
-                      label="Last Name"
-                    />
-                  </div>
+                <div className="col-md-6">
+                  <Field
+                    name="firstName"
+                    type="text"
+                    component={renderField}
+                    label="First Name"
+                  />
                 </div>
-                <div className="col-md-12">
-                  <div className="col-md-6">
-                    <Field
-                      name="email"
-                      type="text"
-                      component={renderField}
-                      label="Email"
-                    />
-                    {error && <strong className={errors}>{error}</strong>}
-                  </div>
-                  <div className="col-md-6">
-                    <Field
-                      name="password"
-                      type="password"
-                      component={renderField}
-                      label="Password"
-                    />
-                  </div>
+                <div className="col-md-6">
+                  <Field
+                    name="lastName"
+                    type="text"
+                    component={renderField}
+                    label="Last Name"
+                  />
                 </div>
               </div>
-              <div>
+              <div className="row">
+                <div className="col-md-6">
+                  <Field
+                    name="email"
+                    type="text"
+                    component={renderField}
+                    label="Email"
+                  />
+                  {error && <strong className={errors}>{error}</strong>}
+                </div>
+                <div className="col-md-6">
+                  <Field
+                    name="password"
+                    type="password"
+                    component={renderField}
+                    label="Password"
+                  />
+                </div>
+              </div>
+           
                 <br />
                 <div className="row">
-                  <div className="col-md-7">
-                    <div className="col-md-2">
+                    <div className="col-md-1">
                       <button className="btn btn-success" type="submit" disabled={submitting}>Sign Up</button>
-                    </div>
-                    <div className="col-md-3">
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div className="col-md-1">
                       <button className="btn btn-secondary" type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-                    </div>
-                    <div className="col-md-2">
-                     <FlatButton><Link to="/dashboard">Back</Link></FlatButton>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div className="col-md-1">
+                      <FlatButton><Link to="/dashboard">Back</Link></FlatButton>
                     </div>
                   </div>
-                </div>
-              </div>
             </form>
           </div>
         </div>

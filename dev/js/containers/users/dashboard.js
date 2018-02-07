@@ -23,10 +23,10 @@ class UserData extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="modal-body">
-                            <div className="well">
+                            <div className="card bg-faded card-block">
                                 <h1>Welcome TO Dashboard</h1>
-                            </div>
-                            <div className="well">
+                            </div><br />
+                            <div className="card bg-faded card-block">
                                 <table className="table table-hover">
                                     <thead>
                                         <tr>
@@ -48,15 +48,13 @@ class UserData extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12">
                             <div className="col-md-1">
                                 <button type="button" className="btn btn-link"><Link to="/update">Update</Link></button>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-1">
                                 <button type="button" onClick={this.logout} className="btn btn-primary">Logout</button>
                             </div>
                         </div>
-                    </div>
                 </div>
                 :
                 <h2>Loading...</h2>
