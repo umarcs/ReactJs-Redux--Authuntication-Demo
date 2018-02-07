@@ -3,10 +3,16 @@ import { SubmissionError } from 'redux-form'
 //import config from '../config';
 
 
+let apiBaseUrl = '/';
+if(process.env.NODE_ENV == 'production') {
+    apiBaseUrl = 'http://209.250.243.231:2000'
+} else {
+    apiBaseUrl = 'http://localhost:2000'
+}
 
  
 export function getSingleUser(userId){  
-    const url = `http://localhost:2000/userFindById/${userId}`;
+    const url = `${apiBaseUrl}/userFindById/${userId}`;
     return  Request.get(url).then((response=>{
         return{
             type : "GET_USER_BY_ID",
@@ -17,7 +23,7 @@ export function getSingleUser(userId){
 }
 
 export function getUserData(){  
-    const url = "http://localhost:2000/getUserData";
+    const url = `${apiBaseUrl}/getUserData`;
     return  Request.get(url).then((response=>{
         return{
             type : "USER_DATA_FROM_DB",
@@ -30,7 +36,7 @@ export function getUserData(){
 export function signUp(data){  
 
     console.log("signup fun vals",data)
-    const url = "http://localhost:2000/api/signup";
+    const url = `${apiBaseUrl}/api/signup`;
     return  Request.post(url).send(data).then(response=>{
         return {
             type : "USER_SIGNUP",
@@ -46,7 +52,7 @@ export function loginAction(data){
     console.log("data",data)
 
 
-    const url = "http://localhost:2000/api/login";
+    const url = `${apiBaseUrl}/api/login`;
     return  Request.post(url).send(data).then(response=>{
         console.log("data",response.body.data)
         localStorage.setItem("token",response.body.token);
@@ -66,7 +72,7 @@ export function update(data){
     let id = data._id 
     let token = localStorage.getItem('token')
     console.log(token)
-    const url = `http://localhost:2000/updateUser/${id}`;
+    const url = `${apiBaseUrl}/updateUser/${id}`;
      return  Request.put(url).set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
      .send(data).then(response=>{
         console.log("data",response)
@@ -100,7 +106,7 @@ export function loadLogin(userData){
 //----------get user data through token----------
 export function getUserDataByToken(){ 
     let token = localStorage.getItem('token')
-    const url = `http://localhost:2000/api/singleUserData`;
+    const url = `${apiBaseUrl}/api/singleUserData`;
      return  Request.get(url).set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
      .then(response=>{
         console.log("data by token send ",response)
