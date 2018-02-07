@@ -62,15 +62,15 @@ export function loginAction(data){
 }
 //----------UPDATE----------
 export function update(data){ 
-    console.log(data)
-    let id = data.id 
+    console.log("data>>>>>>",data)
+    let id = data._id 
     let token = localStorage.getItem('token')
     console.log(token)
     const url = `http://localhost:2000/updateUser/${id}`;
      return  Request.put(url).set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
      .send(data).then(response=>{
         console.log("data",response)
-        localStorage.setItem("loadLogin",JSON.stringify(response.body));
+        //localStorage.setItem("loadLogin",JSON.stringify(response.body));
 
         return {
             type : "USER_UPDATE",
@@ -114,19 +114,7 @@ export function getUserDataByToken(){
         throw new SubmissionError({_error: err })
     })
 }
-//----------Update----------
-// export function loginAction(data){  
 
-//     const url = "http://localhost:2000/api/login";
-//     return  Request.post(url).send(data).then((response=>{
-//                 return{
-//                         type : "USER_LOGIN",
-//                         payload : response.body
-//                       }
-//                  })
-//              )
-// }
-   
    
 
 

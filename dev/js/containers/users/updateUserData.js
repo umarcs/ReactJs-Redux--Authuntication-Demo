@@ -14,7 +14,7 @@ class Login extends React.Component {
     submit(vals) {
         console.log("vals <<<<<",vals)
         let data = {
-            id : vals.id,
+            _id : vals._id,
             firstName : vals.firstName,
             lastName : vals.lastName
         }
